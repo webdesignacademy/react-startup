@@ -61,43 +61,45 @@ _App.js
     }
 
 
-#REACT ROUTER
-The react router is basically creating a route / path / link to different components / pages in our app
 
-You might have to install react-router-dom via npm like you do when installing react. In your project folder in CLI you just run      npm install react-router-dom   then   
-npm start  again
+# REACT ROUTER
+
+## The react router is basically creating a route / path / link to different components / pages in our app
+
+> You might have to install react-router-dom via npm like you do when installing react. In your project folder in CLI you just run      npm install react-router-dom   then   
+    npm start  again
 
 As mentioned in the beginning each page will be a separate js file or component. In each component you will import React.
 
-In order to use react router you also need to import BrowserRouter, Switch and Route from React Router Dom. In the below example Im importing BrowserRouter as Router (optional but shorter) then im using <Router/> to wrap my code. 
+> In order to use react router you also need to import BrowserRouter, Switch and Route from React Router Dom. In the below example Im importing BrowserRouter as  Router (optional but shorter) then im using <Router/> to wrap my code. 
 
-Also be sure to import all your pages/components into the main app file where you want to display them. Se below full example of all imports.
+*Also be sure to import all your pages/components into the main app file where you want to display them. Se below full example of all imports.
 
-import React from 'react'
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import Nav from './Nav';
-import Nav from './Home';
-import Nav from './About';
-import Nav from './Shop';
+	import React from 'react'
+	import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+	import Nav from './Nav';
+	import Nav from './Home';
+	import Nav from './About';
+	import Nav from './Shop';
 
 
 You then wrap your app code includeing the nav and different components inside a <Router>
 
 App.js
 
-return(
-	<Router>
-		<div className="App">
-			<Nav/>
-			<Switch>
-			  <Route exact path="/" component={Home} />
-			  <Route path="/about" component={About} />
-			  <Route path="/shop" component={Shop} />
-			  <Route path="/contact" component={Contact} />
-			<Switch/>
-		</div>
-	</Router/>
-)
+	return(
+		<Router>
+			<div className="App">
+				<Nav/>
+				<Switch>
+				  <Route exact path="/" component={Home} />
+				  <Route path="/about" component={About} />
+				  <Route path="/shop" component={Shop} />
+				  <Route path="/contact" component={Contact} />
+				<Switch/>
+			</div>
+		</Router/>
+	)
 
 Check the exact path on the home page. This is to ensure the route does not load multiple pages for using just the / in the URL (for home). This is where the Switch comes into play.
 
@@ -105,27 +107,27 @@ Inside your nav.js file is where you will create the actual links to the differe
 
 Nav.js
 
-import React from 'react'
-import {Link} from 'react-router-dom';
- 
-return(
-	<Router>
-		<nav className="nav">
-		  <ul>
-			<Link to="/">
-			   <li>Home</li>
-			</Link>
-			<Link to="/about">
-			   <li>About</li>
-			</Link>
-			<Link to="/shop">
-			   <li>Shop</li>
-			</Link>
-		  </ul>
-		</nav>
-	</Router/>
-)
-export default Nav;
+	import React from 'react'
+	import {Link} from 'react-router-dom';
+
+	return(
+		<Router>
+			<nav className="nav">
+			  <ul>
+				<Link to="/">
+				   <li>Home</li>
+				</Link>
+				<Link to="/about">
+				   <li>About</li>
+				</Link>
+				<Link to="/shop">
+				   <li>Shop</li>
+				</Link>
+			  </ul>
+			</nav>
+		</Router/>
+	)
+	export default Nav;
 
 > We are using the Link above and importing it as well. Be sure to also check out NavLink. The NavLink will add a active class to the menu item.                                                                   
 
@@ -133,30 +135,31 @@ We are using the Link instead of an <a> tag. React default behaviour will then l
 AND THIS IS WHAT MAKES IT SO POPULAR AS AN SPA (SINGLE PAGE APP) 
 
 
-#REACT STATE
+# REACT STATE
 The react state is basically the data beign used at a specific time. Like when someone click on a button and we want to update data in the file (text, numbers, arrays etc). React does not 'react to changes in a document, like when clicked on). 
 
 We use the HOOK called STATE in order to achieve this. Update data. The hook is called useState()
 
-You need to import the useState hook when you use it in your components.
+### You need to import the useState hook when you use it in your components.
 
-import {useState} from 'react'
-
-
-const [name, setName = useState('brian');
-
-const btnClick = () {
-	setName('Gordon);
-}
-return(
-	<p>{name}</p>
-)
-<button onClick={btnClick}>UPDATE NAME</p>
-
-In the example above the initial value for name is Brian. When we click the button the value will be updated to Gordon
+	import {useState} from 'react'
 
 
-###OUTPUTTING DATA WITH JS MAP FUNCTION
+	const [name, setName = useState('brian');
+
+	const btnClick = () {
+		setName('Gordon);
+	}
+	return(
+		<p>{name}</p>
+	)
+	<button onClick={btnClick}>UPDATE NAME</p>
+
+	
+> In the example above the initial value for name is Brian. When we click the button the value will be updated to Gordon
+
+
+### OUTPUTTING DATA WITH JS MAP FUNCTION
 In order to output a list of data (json, array) you can use the JS map() function. 
 
 Each item must have a unique identifier like an id. We can use the key{} keyword to do that.
